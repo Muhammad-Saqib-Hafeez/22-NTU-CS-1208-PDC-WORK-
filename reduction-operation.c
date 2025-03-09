@@ -10,7 +10,7 @@ unsigned long long factorial(int n) {
 }
 
 int main() {
-    int start = 1, end = 20;
+    int start = 1, end = 10000;
     unsigned long long results[end - start + 1]; 
     double start_time = omp_get_wtime();
 
@@ -22,15 +22,15 @@ int main() {
         unsigned long long fact = factorial(i);
         results[i - start] = fact;
         sum += fact;
-        printf("Thread %d calculated %d! = %llu\n", thread_id, i, results[i - start]);
+        // printf("Thread %d calculated %d! = %llu\n", thread_id, i, results[i - start]);
     }
 
     double end_time = omp_get_wtime();
 
-    printf("Factorials from %d to %d (Reduction):\n", start, end);
-    for (int i = start; i <= end; i++) {
-        printf("%d! = %llu\n", i, results[i - start]);
-    }
+    // printf("Factorials from %d to %d (Reduction):\n", start, end);
+    // for (int i = start; i <= end; i++) {
+    //     printf("%d! = %llu\n", i, results[i - start]);
+    // }
 
     printf("Sum of factorials: %llu\n", sum);
 
